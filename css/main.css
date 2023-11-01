@@ -1,0 +1,43 @@
+
+body { 
+    height: 100vh;
+    position: relative;
+    background-color: white;
+    overflow: hidden;
+    
+}
+
+#board {
+    width: 1000px;
+    height: 600px;
+    margin: auto;
+    position: absolute;
+    overflow: hidden;
+    background-color:aqua;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.player-class {
+    background-color:blue;
+    position: absolute;
+}
+
+.obstacle-class {
+    background-color:rgb(255, 0, 166);
+    position: absolute;
+}
+
+#page-gameover {
+    text-align: center;
+    background-color: rgb(166, 161, 171);
+}
+
+.bullet-class {
+    background-color: rgb(145, 53, 8);
+    border-radius: 10px;
+    
+}
