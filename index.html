@@ -5,30 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats and Cucumbers</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+    <style>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: 'VT323', sans-serif;
+        }
+      </style>
+
+      <script>
+      const timestamp = new Date().getTime();
+      </script>
+
     <link rel="stylesheet" href="./css/main.css">
 
-
-
+    
 </head>
 <body>
 
+
+  <audio src="./sound/T. Bless - Froggy Fraud Adventure.mp3" + timestamp autoplay loop></audio>
+
+    <div id="scoreboard" class="scoreboard-class">
+        <h1>Score: <span id="score">0</span></h1>
+        <h1>Life: <span id="life">3</span></h1>
+      </div>
+
+    <div id="game">
+
+        <div id="splat-sprite"></div>
+        <div id="explode"></div>
+        <div id="player"></div>
+
+
+        <audio id="explodeSound" src="./sound/Cristian Lucchetta - Space Launch - Explosion Blast  Distant Perspective.aac"></audio>
+
+        <audio id="splatSound" src="./sound/Dauzkobza - Soaking Wet - Big Mud Splat.aac"></audio>
+
+        <audio id="shootSound" src="./sound/Laser.aac"></audio>
     
-    
-    <div id="board">
-        <div id="game-element"></div>
+
+
+
     </div>
 
-    <script src="./js/game.js"></script>
+    <script src="./js/scoreboard.js"></script>
     <script src="./js/bullet.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/obstacle.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/main.js"></script> 
 
-
-
-
-
-
-    
 </body>
 </html>

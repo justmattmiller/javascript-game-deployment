@@ -1,10 +1,10 @@
 class PlayerElm {
     constructor() {
-        this.width = 20;
-        this.height = 20;
+        this.width = 120;
+        this.height = 120;
         this.positionX = 50;
         this.positionY = 290;
-        this.boardHeight = 0;
+        this.gameHeight = 0;
         this.hasCollided = false;
 
         this.playerElm = document.createElement('div');
@@ -14,6 +14,12 @@ class PlayerElm {
         this.playerElm.style.left = this.positionX + 'px';
         this.playerElm.style.bottom = this.positionY + 'px';
         this.playerElm.classList.add('player-class');
+
+        this.images = {
+            up: 'images/cat/cat-up.gif',
+            down: 'images/cat/cat-down.gif',
+            static: 'images/cat/cat-facing-right.png'
+          };
 
         this.createDomElement();
 
@@ -28,18 +34,27 @@ class PlayerElm {
                     break;
             }
         });
+
+        document.addEventListener('keyup', (e) => {
+            if (e.code === 'ArrowUp' || e.code === 'ArrowDown') {
+              this.changeImage('static');
+            }
+          });
     }
 
     createDomElement() {
-        const parentElm = document.getElementById('board');
+        const parentElm = document.getElementById('game');
         parentElm.appendChild(this.playerElm);
-        this.boardHeight = parentElm.offsetHeight;
+        this.gameHeight = parentElm.offsetHeight;
+
+        this.playerElm.style.zIndex = '2';
     }
 
     moveUp() {
-        if (this.positionY + this.height < this.boardHeight) {
+        if (this.positionY + this.height < this.gameHeight) {
             this.positionY += 10;
             this.playerElm.style.bottom = this.positionY + 'px';
+            this.changeImage('up');
         }
     }
     
@@ -47,8 +62,21 @@ class PlayerElm {
         if (this.positionY > 0) {
             this.positionY -= 10;
             this.playerElm.style.bottom = this.positionY + 'px';
+            this.changeImage('down');
         }
     }
+
+    changeImage(state) {
+        let imagePath;
+        if (state === 'up') {
+          imagePath = this.images.up;
+        } else if (state === 'down') {
+          imagePath = this.images.down;
+        } else {
+          imagePath = this.images.static || this.images.up;
+        }
+        this.playerElm.style.background = `url(${imagePath}) left/cover no-repeat`;
+      }
 
 }
 

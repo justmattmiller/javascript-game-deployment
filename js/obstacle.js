@@ -5,7 +5,6 @@ class Obstacle {
         this.height = 50
         this.positionX = 990 - this.width
         this.positionY = Math.floor(Math.random() * (1000 - this.height + 1));
-        // this.hasCollided = false;
 
         this.obstacleElm = document.createElement('div');
         this.obstacleElm.style.position = 'absolute';
@@ -19,9 +18,9 @@ class Obstacle {
     
     }
     createDomElement() {
-        const parentElm = document.getElementById('board');
+        const parentElm = document.getElementById('game');
         parentElm.appendChild(this.obstacleElm);
-        this.boardWidth = parentElm.offsetWidth;
+        this.gameWidth = parentElm.offsetWidth;
     }
 
     moveLeft() {
@@ -38,19 +37,28 @@ class Obstacle {
         }
     }
 
-
-    checkCollision(player) {
-        if (
+    checkCollision(player, bullets) {
+        const playerCollision = (
           player.positionX < this.positionX + this.width &&
           player.positionX + player.width > this.positionX &&
           player.positionY < this.positionY + this.height &&
           player.positionY + player.height > this.positionY
-        ) {
-          if (!player.hasCollided) {
-            player.hasCollided = true;
-            location.href = "./gameover.html"; 
+        );
+      
+        let bulletCollision = false;
+        for (let i = 0; i < bullets.length; i++) {
+          const bullet = bullets[i];
+          if (
+            bullet.positionX < this.positionX + this.width &&
+            bullet.positionX + bullet.width > this.positionX &&
+            bullet.positionY < this.positionY + this.height &&
+            bullet.positionY + bullet.height > this.positionY
+          ) {
+            bulletCollision = true;
+            break;
           }
         }
+      
+        return { playerCollision, bulletCollision };
       }
-}
-
+    }
