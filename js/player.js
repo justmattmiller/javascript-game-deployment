@@ -16,9 +16,9 @@ class PlayerElm {
         this.playerElm.classList.add('player-class');
 
         this.images = {
-            up: 'images/cat/cat-up.gif',
-            down: 'images/cat/cat-down.gif',
-            static: 'images/cat/cat-facing-right.png'
+            up: './images/cat/cat-up.gif',
+            down: './images/cat/cat-down.gif',
+            static: './images/cat/cat-facing-right.png'
           };
 
         this.createDomElement();
